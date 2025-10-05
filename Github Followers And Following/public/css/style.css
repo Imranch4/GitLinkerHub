@@ -1,0 +1,510 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            width: 90%;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            padding-top: 35px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: #ddd;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 700px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: #bbb;
+        }
+
+        /* Fixed Button Animation Styles */
+        .type--C {
+            --line_color: #ffffff;
+            --back_color: #000000;
+        }
+
+        .button {
+            position: relative;
+            z-index: 0;
+            width: 240px;
+            height: 56px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--line_color);
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button__text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button::before,
+        .button::after,
+        .button__text::before,
+        .button__text::after {
+            content: "";
+            position: absolute;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--line_color);
+            transition: all 0.5s ease;
+        }
+
+        .button::before {
+            top: 0;
+            left: 54px;
+            width: calc(100% - 56px * 2 - 16px);
+        }
+
+        .button::after {
+            top: 0;
+            right: 54px;
+            width: 8px;
+        }
+
+        .button__text::before {
+            bottom: 0;
+            right: 54px;
+            width: calc(100% - 56px * 2 - 16px);
+        }
+
+        .button__text::after {
+            bottom: 0;
+            left: 54px;
+            width: 8px;
+        }
+
+        .button__line {
+            position: absolute;
+            top: 0;
+            width: 56px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .button__line::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150%;
+            height: 100%;
+            box-sizing: border-box;
+            border-radius: 300px;
+            border: solid 3px var(--line_color);
+        }
+
+        .button__line:nth-child(1),
+        .button__line:nth-child(1)::before {
+            left: 0;
+        }
+
+        .button__line:nth-child(2),
+        .button__line:nth-child(2)::before {
+            right: 0;
+        }
+
+        .button:hover {
+            letter-spacing: 6px;
+        }
+
+        .button:hover::before,
+        .button:hover .button__text::before {
+            width: 8px;
+        }
+
+        .button:hover::after,
+        .button:hover .button__text::after {
+            width: calc(100% - 56px * 2 - 16px);
+        }
+
+        .button__drow1,
+        .button__drow2 {
+            position: absolute;
+            z-index: -1;
+            border-radius: 16px;
+            transform-origin: 16px 16px;
+        }
+
+        .button__drow1 {
+            top: -16px;
+            left: 40px;
+            width: 32px;
+            height: 0;
+            transform: rotate(30deg);
+        }
+
+        .button__drow2 {
+            top: 44px;
+            left: 77px;
+            width: 32px;
+            height: 0;
+            transform: rotate(-127deg);
+        }
+
+        .button__drow1::before,
+        .button__drow1::after,
+        .button__drow2::before,
+        .button__drow2::after {
+            content: "";
+            position: absolute;
+        }
+
+        .button__drow1::before {
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 32px;
+            border-radius: 16px;
+            transform-origin: 16px 16px;
+            transform: rotate(-60deg);
+        }
+
+        .button__drow1::after {
+            top: -10px;
+            left: 45px;
+            width: 0;
+            height: 32px;
+            border-radius: 16px;
+            transform-origin: 16px 16px;
+            transform: rotate(69deg);
+        }
+
+        .button__drow2::before {
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 32px;
+            border-radius: 16px;
+            transform-origin: 16px 16px;
+            transform: rotate(-146deg);
+        }
+
+        .button__drow2::after {
+            bottom: 26px;
+            left: -40px;
+            width: 0;
+            height: 32px;
+            border-radius: 16px;
+            transform-origin: 16px 16px;
+            transform: rotate(-262deg);
+        }
+
+        .button__drow1,
+        .button__drow1::before,
+        .button__drow1::after,
+        .button__drow2,
+        .button__drow2::before,
+        .button__drow2::after {
+            background: var(--back_color);
+        }
+
+        /* FIXED ANIMATIONS */
+        .button:hover .button__drow1 {
+            animation: drow1 ease-in 0.06s;
+            animation-fill-mode: forwards;
+        }
+
+        .button:hover .button__drow1::before {
+            animation: drow2 linear 0.08s 0.06s;
+            animation-fill-mode: forwards;
+        }
+
+        .button:hover .button__drow1::after {
+            animation: drow3 linear 0.03s 0.14s;
+            animation-fill-mode: forwards;
+        }
+
+        .button:hover .button__drow2 {
+            animation: drow4 linear 0.06s 0.2s;
+            animation-fill-mode: forwards;
+        }
+
+        .button:hover .button__drow2::before {
+            animation: drow3 linear 0.03s 0.26s;
+            animation-fill-mode: forwards;
+        }
+
+        .button:hover .button__drow2::after {
+            animation: drow5 linear 0.06s 0.32s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes drow1 {
+            0% { height: 0; }
+            100% { height: 100px; }
+        }
+
+        @keyframes drow2 {
+            0% { 
+                width: 0; 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0; 
+            }
+            11% { 
+                opacity: 1; 
+            }
+            100% { 
+                width: 120px; 
+            }
+        }
+
+        @keyframes drow3 {
+            0% { width: 0; }
+            100% { width: 80px; }
+        }
+
+        @keyframes drow4 {
+            0% { height: 0; }
+            100% { height: 120px; }
+        }
+
+        @keyframes drow5 {
+            0% { width: 0; }
+            100% { width: 124px; }
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Followers/Following Lists */
+        .social-lists {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5rem;
+            gap: 20px;
+        }
+
+        .list-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 300px;
+        }
+
+        .list-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .user-list {
+            list-style: none;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .user-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .user-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .user-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .user-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .user-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .user-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .user-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .user-bio {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .follow-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .follow-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            padding: 1rem;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .features, .social-lists {
+                flex-direction: column;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
