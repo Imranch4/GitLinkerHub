@@ -1,8 +1,11 @@
-# 🚀 GitLinkerHub 
+<img width="1474" height="813" alt="Screenshot 2025-10-11 123512" src="https://github.com/user-attachments/assets/00f9480b-bee4-4b1b-9c68-e295b1844624" /># 🚀 GitLinkerHub 
 🚀 **Live Site:** [git-linker-hub.vercel.app](https://git-linker-hub.vercel.app/)
 
 **Explore and visualize your GitHub social connections!**  
 Discover who’s following you, who you’re following, and gain insights into your network in a modern, interactive interface.
+
+![App Screenshot]<img width="1474" height="813" alt="Screenshot 2025-10-11 123512" src="https://github.com/user-attachments/assets/68a61d8a-28e6-4290-ac5c-5b96320b1f4d" />
+
 
 ---
 
